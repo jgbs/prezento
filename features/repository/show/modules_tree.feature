@@ -55,3 +55,21 @@ Feature: Repository modules tree
     And I click on the sample child's name
     And I wait for "5" seconds
     Then I should see a sample child's name
+
+  @kalibro_restart @kalibro_processor_restart @javascript
+  Scenario: Should show a module name even if it is an array
+    Given I am a regular user
+    And I am signed in
+    And I have a sample project
+    And I have a sample configuration with native metrics
+    And I have a sample repository within the sample project
+    And I have a sample module within the sample repository named with an array
+    And I start to process that repository
+    And I wait up for a ready processing
+    And I ask for the last ready processing of the given repository
+    And I ask for the module result of the given processing
+    When I visit the repository show page
+    And I click the "Modules Tree" h3
+    And I wait for "5" seconds
+    Then I should see a sample child's name
+    And I should see "mezuro"

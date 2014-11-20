@@ -34,6 +34,19 @@ Given(/^I have a sample repository within the sample project named "(.+)"$/) do 
                                                  configuration_id: @mezuro_configuration.id, id: nil, name: name})
 end
 
+Given(/^I have a sample module within the sample repository named with an array$/) do
+  @module = FactoryGirl.create(:module, { name: ["org", "mezuro"]} )
+  @formated_name = format_module_name(@module.name)
+  expect(@formated_name).to equal("mezuro")
+  # de onde vem o modulo
+  # o que eh um modulo
+  # quando o nome de um modulo eh um array, uma string, algo diferente
+  # o que eh algo diferente de string e array
+  # como simular o modulo com seus metodos
+  # onde tem um exemplo de module name que seja um array ou como simular isso
+
+end
+
 Given(/^I start to process that repository$/) do
   @repository.process
 end
